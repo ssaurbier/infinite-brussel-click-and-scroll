@@ -31,13 +31,11 @@ var page = 2;
 
 $(window).scroll(function() {
    if($(window).scrollTop() + (window).innerHeight == $(document).height()) {
-     $.get("/tweets.json?page=" + page, function(tweets) {
-       if ( tweets.length > 0 ){
+     $.get("/tweets.json?page=" + page, function(tweet) {
          page++;
-       }
-       tweets.forEach(function(tweets) {
+       tweet.forEach(function(tweet) {
          $('.tweets').append('<li class="tweet"><div class="body">'
-         + tweets.text + '</div><div class="user">' + tweets.username
+         + tweet.text + '</div><div class="user">' + tweet.username
          + '</div></li>');
        });
      });
